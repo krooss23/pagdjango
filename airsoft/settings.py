@@ -28,6 +28,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = '/listado'
+LOGOUT_REDIRECT_URL = '/'
+
+
+
 
 # Application definition
 

@@ -1,11 +1,4 @@
 
-body{
-  background-color: crimson;
-}
-
-
-
-
 .carousel-item{
     height: 400px;
     width: 100%;
@@ -77,3 +70,6 @@ table th {
   background-clip: padding-box;
   box-shadow: 10px 10px 10px rgba(33, 47, 71, 0.03);
 }
+
+
+

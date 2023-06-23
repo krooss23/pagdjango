@@ -9,25 +9,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="{% static 'css/stylo.css' %}">
   
-  <title>tierra de bosques</title>
+  <title >tierra de bosques</title>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="#">Home</a>
-          </li>
-          <li class="breadcrumb-item">
-            <a href="#">Library</a>
-          </li>
-          <li class="breadcrumb-item active" aria-current="page">
-            <a href="#">Data</a>
-          </li>
-        </ol>
-      </nav>
-    </div>
-  </nav>
+
 
 
 </head>
@@ -38,6 +22,48 @@
 
 
 <body>
+
+  <nav class="navbar bg-body-tertiary fixed-top shadow-sm">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">Tierra de bosques</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+          <li>
+            <a href="{% url 'listado' %}">{{ user.username }}</a>
+          </li>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Inicio</a>
+            </li>
+            
+          {% if user.is_authenticated %}
+          <li>
+            <a href="{% url 'logout' %}">cerrar session</a>
+          </li>
+          {% else %}
+          <li>
+            <a href="{% url 'login' %}">iniciar sesion</a>
+          </li>
+          {% endif %}
+          </ul>
+
+          
+
+      
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  
+  
  
   <div class="container-fluid">
   
@@ -279,7 +305,7 @@
         
 
 
-
   
 </body>
+
 </html>
