@@ -1,9 +1,11 @@
 from django import forms
 from .models import Player
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
 
-opciones = [('vetado', 'Vetado'), ('activo', 'Activo')]
+
 
 class FormPlayer(forms.ModelForm):
    
@@ -27,10 +29,17 @@ class FormPlayer(forms.ModelForm):
     
 
 
-
     class Meta:
         model = Player
         fields = '__all__'
+
+
+
+class CustomUserCreationForm(UserCreationForm):
+    
+    class Meta:
+        model = User
+        fields = ['username', "first_name","last_name","email","password1", "password2"]
 
      
 

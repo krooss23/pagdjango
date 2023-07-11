@@ -26,7 +26,7 @@
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
           <li>
-            <a href="#">@{{ user.username }}</a>
+            <a href="{% url 'listado' %}">{{ user.username }}</a>
           </li>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
@@ -53,6 +53,7 @@
                 <li>
                   <a class="dropdown-item" href="{% url 'listado' %}">listado de Player</a></li>
                 <li><a class="dropdown-item" href="{% url 'createPlayer' %}">Create Player</a></li>
+                <li><a class="dropdown-item" href="{% url 'registro' %}">Registro adm</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
@@ -101,6 +102,8 @@
                 <th scope="col">Nick</th>
                 <th scope="col">Correo Electronico</th>
                 <th scope="col">Estado</th>
+                <th scope="col">Rol</th>
+                <th scope="col">Equipo</th>
                 <th scope="col">Opciones</th>
                 
               </tr>
@@ -120,6 +123,8 @@
                 <td>{{i.nombreTeam}}</td>
                 <td>{{i.nick}}</td>
                 <td>{{i.correo}}</td>
+                <td>{{i.idRolPlayer}}</td>
+                <td>{{i.idEquipo}}</td>
                 <td>{{i.idEstado}}</td>
                 <td>
                   <a class="btn btn-danger" href="deletePlayer/{{i.idPlayer}}">Eliminar</a>
@@ -144,19 +149,7 @@
 
 
             
-          <select  class="form-select form-select-lg mb-3 text-center" aria-label=".form-select-lg example">
-            <option selected>Tipo de partida</option>
-            <option value="1">publica</option>
-            <option value="2">evento</option>
-            <option value="3">privada</option>
-          </select>
           
-          <select class="form-select form-select-sm text-center" aria-label=".form-select-sm example">
-            <option selected>Tematica</option>
-            <option value="1">Casona</option>
-            <option value="2">Defiende el fuerte</option>
-            <option value="3">Medico</option>
-          </select>
 
           <br>
           <br>

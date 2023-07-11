@@ -25,7 +25,7 @@
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
           <li>
-            <a href="#">@{{ user.username }}</a>
+            <a href="{% url 'listado' %}">{{ user.username }}</a>
           </li>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>

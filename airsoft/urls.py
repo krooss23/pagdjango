@@ -5,7 +5,7 @@ from django.urls import path,include
 
 
 
-from airsoftcqb.views import rendertemplates, historia, replica, listado, createPlayer, cancha, vetado, deletePlayer,unban
+from airsoftcqb.views import rendertemplates, historia, replica, listado, createPlayer, cancha, vetado, deletePlayer,unban, registro
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -20,6 +20,8 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('vetado/unban/<int:id>/<int:op>', unban, name='unban'),
     path('listado/unban/<int:id>/<int:op>', unban, name='unban'),
+    path('registro/', registro, name= "registro"),
+    
 
 
 

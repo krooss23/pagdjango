@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Player, Estado
+from .models import Player, Estado, RolPlayer, Equipo
 
 
 # Register your models here.
@@ -13,6 +13,18 @@ class Player (admin.ModelAdmin):
 @admin.register(Estado)
 class Estado(admin.ModelAdmin):
     list_display = ('idEstado', 'nombreEstado')
+
+
+
+@admin.register(RolPlayer)
+class RolPlayer(admin.ModelAdmin):
+    list_display = ('idRolPlayer', 'rol')
+
+@admin.register(Equipo)
+class Equipo(admin.ModelAdmin):
+    list_display = ('idEquipo', 'nombreEquipo')
+
+
 
   
 

@@ -12,6 +12,29 @@ class Estado(models.Model):
     def __str__(self):
         return self.estadosJugador()
 
+    
+
+class RolPlayer(models.Model):
+    idRolPlayer = models.AutoField(primary_key=True)
+    rol = models.CharField(max_length=50)
+
+    def RolPlayer(self):
+        return "{}".format(self.rol)
+
+    def __str__(self):
+        return self.RolPlayer()
+
+class Equipo(models.Model):
+    idEquipo = models.AutoField(primary_key=True)
+    nombreEquipo = models.CharField(max_length=50)
+
+    def Equipo(self):
+        return "{}".format(self.nombreEquipo)
+
+    def __str__(self):
+        return self.Equipo()
+
+
 class Player(models.Model): 
     idPlayer = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50)
@@ -21,47 +44,32 @@ class Player(models.Model):
     nombreTeam = models.CharField(max_length=50, verbose_name = 'Nombre Team')
     nick = models.CharField(max_length=50)
     correo = models.CharField(max_length=50)
+    idRolPlayer = models.ForeignKey(RolPlayer, null = True, blank = True, verbose_name = 'rolPlayer', on_delete = models.CASCADE)
+    idEquipo = models.ForeignKey(Equipo, null = True, blank = True, verbose_name = 'equipo', on_delete = models.CASCADE)
     idEstado = models.ForeignKey(Estado, null = True, blank = True, verbose_name = 'estado', on_delete = models.CASCADE)
-
-    
-    
-    
-
-class Team(models.Model):
-    idTeam = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=50)
 
 
 
 class Partida(models.Model):
     idPartida = models.AutoField(primary_key=True)
-    dia = models.CharField(max_length=50)
-    equipoA = models.CharField(max_length=50)
-    equipoB = models.CharField(max_length=50)
+    lugar = models.CharField(max_length=50)
+    fecha = models.DateField(null=True)
+   
 
 
-class Moderador(models.Model):
-     idModerador = models.AutoField(primary_key=True)
-     nombre = models.CharField(max_length=50)
-     apellido = models.CharField(max_length=50)
-     replica = models.CharField(max_length=50)
+class Asignacion(models.Model):
+    idAsignacion = models.AutoField(primary_key=True)
+    idPlayer = models.ForeignKey(Player, null = True, blank = True, verbose_name = 'player', on_delete = models.CASCADE)
+    idPartida = models.ForeignKey(Partida, null = True, blank = True, verbose_name = 'partida', on_delete = models.CASCADE)
 
 
-class Cancha(models.Model):
-    idCancha = models.AutoField(primary_key=True)
-    evento = models.CharField(max_length=50)
-    horario = models.CharField(max_length=50)
-    dia = models.CharField(max_length=50)
-    moderador = models.ForeignKey(Moderador, null = True, blank = True, verbose_name = 'moderador', on_delete = models.CASCADE)
-    partida = models.ForeignKey(Partida, null = True, blank = True, verbose_name = 'partida', on_delete = models.CASCADE)
 
 
-class EstadoPlayer(models.Model):
-    idEstadoPlayer = models.AutoField(primary_key=True)
-    player = models.ForeignKey(Player, null = True, blank = True, verbose_name = 'player', on_delete = models.CASCADE)
-    cancha = models.ForeignKey(Cancha, null = True, blank = True, verbose_name = 'cancha', on_delete = models.CASCADE)
-    estado = models.ForeignKey(Estado, null = True, blank = True, verbose_name = 'estado', on_delete = models.CASCADE)
-    team   = models.ForeignKey(Team, null = True, blank = True, verbose_name = 'estado', on_delete = models.CASCADE)
+
+
+
+
+
 
 
 
