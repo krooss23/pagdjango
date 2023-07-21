@@ -20,6 +20,16 @@ def replica(request):
 def cancha(request):
     return render(request, 'templatesairsoftcqb/cancha.html' )
 
+
+
+def prueba(request):
+    return render(request, 'templatesairsoftcqb/prueba.html' )
+
+
+
+
+
+
 def listado(request):
     players = Player.objects.all()
     data = {'players': players}
